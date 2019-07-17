@@ -1,0 +1,84 @@
+<div class="jumbotron  jumbotron-fluid">
+<h1 class="font-weight-dark"  >ADD PRODUCT</h1>
+<form #empForm=ngForm (ngSubmit)="addData()">
+<table>
+        
+    <tr>
+
+            <div class="form-group">
+                    <label for="Pid">Product Id</label>
+                    <input type="text" class="form-control" name="Pid" id="id" [(ngModel)]="proId" #procontrol="ngModel" aria-describedby="emailHelp" placeholder="Enter product Id" required>
+                    <small id="idHelp" class="form-text text-muted" *ngIf="procontrol.touched && procontrol.invalid">Id Should be filled</small>
+                  </div>
+    </tr>
+    <tr>
+
+            <div class="form-group">
+                    <label for="Pname">Product Name</label>
+                    <input type="text" class="form-control" name="Pname" id="name" [(ngModel)]="proName" #procontrol="ngModel" aria-describedby="emailHelp" placeholder="Enter product Name" required>
+                    <small id="idHelp" class="form-text text-muted" *ngIf="procontrol.touched && procontrol.invalid">Name Should be filled</small>
+                  </div>
+    </tr>
+    <tr>
+
+            <div class="form-group">
+                    <label for="Pcost">Product Cost</label>
+                    <input type="text" class="form-control" name="Pcost" id="cost" [(ngModel)]="proCost" #procontrol="ngModel" aria-describedby="emailHelp" placeholder="Enter product Cost" required>
+                    <small id="idHelp" class="form-text text-muted" *ngIf="procontrol.touched && procontrol.invalid">Cost Should be filled</small>
+                  </div>
+    </tr>
+   
+  
+    <tr>
+            <td>Product Online</td>
+        <td><input type="radio" name="poption" id="option" [(ngModel)]="proOption" #optioncontrol="ngModel" value="Yes" required> Yes<br>
+            <input type="radio" name="poption" id="option" [(ngModel)]="proOption" #optioncontrol="ngModel" value="No" required>No</td>
+        <span  class="alert alert-primary" role="alert" *ngIf="optioncontrol.touched && optioncontrol.invalid">Radio button Should be filled</span> 
+    </tr>
+    <tr>
+    
+    
+            <td>Product Category</td>
+            <td><select id = "myList" name="select" [(ngModel)]="proSelect" #selectcontrol="ngModel">
+              <option value = "Grocery">Grocery</option>
+              <option value = "Mobile">Mobile</option>
+              <option value = "Electronics">Electronics</option>
+              <option value = "Cloths">Cloths</option>
+            </select>
+            </td>
+            <span   class="alert alert-primary" role="alert" *ngIf="selectcontrol.touched && selectcontrol.invalid">Category Should be filled</span> 
+</tr>
+    <tr>
+        <td>Available in Store:</td>
+        <td><input type="checkbox" name="Available" id="available" value="Big Bazar" [(ngModel)]="proAvilable1" #avicontrol="ngModel">Big Bazar<br>
+            <input type="checkbox" name="Available" id="available" value="DMart" [(ngModel)]="proAvilable2" #avicontrol="ngModel">dMart<br>
+            <input type="checkbox" name="Available" id="available" value="Reliance" [(ngModel)]="proAvilable3" #avicontrol="ngModel">Reliance<br>
+            <input type="checkbox" name="Available" id="available" value="Mega Store" [(ngModel)]="proAvilable4" #avicontrol="ngModel">Mega Store</td>
+            <span  class="alert alert-primary" role="alert" *ngIf="avicontrol.touched && avicontrol.invalid">Select one option</span>
+    </tr>
+    <tr>
+   <td><input type="submit"  class="btn btn-primary"Primary value="Add Product" [disabled]="empForm.invalid"/></td>
+   </tr>
+</table>
+</form><br><br>
+
+<table border="2" align="center" class="table table-striped table-dark">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Cost</th>
+        <th>Product Online</th>
+        <th>Product Category</th>
+        <th>Available in Store</th>
+    </tr>
+    <tr *ngFor="let p of myallData">
+        <td>{{p.proId}}</td>
+        <td>{{p.proName}}</td>
+        <td>{{p.proCost}}</td>
+        <td>{{p.proOption}}</td>
+        <td>{{p.proSelect}}</td>
+        <td>{{p.abc}}</td>
+
+    </tr>
+</table>
+</div>
